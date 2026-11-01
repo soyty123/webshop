@@ -1,0 +1,2345 @@
+/* Google Font Kantumruy Pro & Plus Jakarta Sans */
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-light: #e0f2fe;
+  --primary-glow: rgba(2, 132, 199, 0.22);
+  --accent: #f59e0b;
+  --accent-glow: rgba(245, 158, 11, 0.22);
+  --success: #10b981;
+  --dark: #0f172a;
+  --card-bg: #ffffff;
+  --bg-soft: #f8fafc;
+  --border-color: #e2e8f0;
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --font-khmer: 'Kantumruy Pro', 'Battambang', system-ui, -apple-system, sans-serif;
+  --font-latin: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Luxurious Golden Shadow & Glow Design Tokens (ស្រមោល និងពន្លឺពណ៌មាស) */
+  --gold-shadow-2xs: 0 1px 3px rgba(245, 158, 11, 0.22), 0 1px 2px rgba(217, 119, 6, 0.12);
+  --gold-shadow-xs: 0 2px 6px rgba(245, 158, 11, 0.25), 0 1px 3px rgba(217, 119, 6, 0.14);
+  --gold-shadow-sm: 0 3px 10px rgba(245, 158, 11, 0.28), 0 1px 3px rgba(217, 119, 6, 0.16);
+  --gold-shadow-md: 0 6px 18px -2px rgba(245, 158, 11, 0.32), 0 3px 8px -1px rgba(217, 119, 6, 0.18);
+  --gold-shadow-lg: 0 12px 28px -4px rgba(245, 158, 11, 0.36), 0 6px 14px -2px rgba(217, 119, 6, 0.20);
+  --gold-shadow-xl: 0 20px 38px -6px rgba(245, 158, 11, 0.40), 0 8px 18px -3px rgba(217, 119, 6, 0.24);
+  --gold-shadow-2xl: 0 28px 55px -10px rgba(245, 158, 11, 0.45), 0 12px 24px -4px rgba(217, 119, 6, 0.28);
+  --gold-aura: 0 0 20px rgba(251, 191, 36, 0.50), 0 0 38px rgba(245, 158, 11, 0.28);
+  --gold-border-glow: rgba(245, 158, 11, 0.45);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Kantumruy Pro', 'Battambang', 'Khmer OS Siemreap', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  touch-action: manipulation;
+}
+
+body {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(ellipse 85% 480px at 50% 0%, rgba(245, 158, 11, 0.14) 0px, transparent 68%),
+    radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.06) 0px, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.08) 0px, transparent 45%),
+    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
+    linear-gradient(rgba(248, 250, 252, 0.90), rgba(248, 250, 252, 0.94)),
+    url('khmer_edu_bg.jpg');
+  background-attachment: fixed;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #1e293b;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Latin numbers & price styling */
+.font-display {
+  font-family: 'Plus Jakarta Sans', 'Kantumruy Pro', sans-serif;
+}
+
+@media (max-width: 639px) {
+  /* Prevent iOS Safari 16px auto-zoom on form inputs */
+  input[type="text"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Mobile Bottom Nav Safe Area */
+  .mobile-bottom-nav {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* Floating Telegram button sits safely above the mobile bottom nav */
+  #floating-telegram {
+    bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px)) !important;
+    right: 0.85rem !important;
+  }
+
+  /* Body bottom padding ensures content never clips under bottom nav */
+  body {
+    padding-bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* Mobile drawer safe area padding */
+  #cart-drawer > div:last-child {
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* Compact size tags on 2-column mobile cards */
+  .size-tag {
+    padding: 0.22rem 0.45rem;
+    font-size: 0.72rem;
+    gap: 0.2rem;
+  }
+}
+
+/* Momentum scrolling on horizontal chips */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom Scrollbar - Smooth & Easy to Click */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dedicated custom scrollbar class for category panels & sidebars */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+  -webkit-overflow-scrolling: touch;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.7);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes bounceSoft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.92; }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-bounce-soft {
+  animation: bounceSoft 0.4s ease;
+}
+
+.animate-float-gentle {
+  animation: floatGentle 3.5s ease-in-out infinite;
+}
+
+/* Glassmorphism & Shadows */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.22);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03), 0 2px 10px rgba(245, 158, 11, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.card-hover-effect {
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.02);
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 20px 32px -8px rgba(245, 158, 11, 0.16), 0 8px 16px -4px rgba(14, 116, 144, 0.06), 0 0 16px rgba(251, 191, 36, 0.16);
+}
+
+/* Badges */
+.badge-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.badge-decor {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  color: #92400e;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.08);
+}
+
+.badge-teaching {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  color: #0369a1;
+  border: 1px solid rgba(2, 132, 199, 0.35);
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.08);
+}
+
+.badge-games {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  color: #166534;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.08);
+}
+
+/* Size Pill */
+.size-tag {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  font-weight: 600;
+}
+
+/* Modal styling & Mobile Scroll Chaining Prevention */
+.modal-backdrop {
+  background-color: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Modal background scroll locking (iOS Safari & Android Chrome) */
+body.modal-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+body.modal-open .modal-backdrop > div,
+body.modal-open #cart-drawer,
+body.modal-open #image-lightbox-modal {
+  touch-action: pan-y pinch-zoom;
+}
+
+.modal-backdrop > div,
+#cart-drawer {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Smooth scrolling container for batch items & product lists without scroll traps */
+.smooth-scroll-box {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: auto !important;
+}
+
+/* Dynamic Viewport Unit Support for Mobile Collapsible Bars */
+@supports (height: 100dvh) {
+  .modal-backdrop > div {
+    max-height: 90dvh !important;
+  }
+  #image-lightbox-modal {
+    height: 100dvh !important;
+  }
+  #cart-drawer {
+    height: 100dvh !important;
+  }
+}
+
+/* Modern Gradient CTA Buttons */
+.btn-primary-glow {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px -1px rgba(2, 132, 199, 0.35);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-primary-glow:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
+  box-shadow: 0 6px 20px -2px rgba(2, 132, 199, 0.5);
+  transform: translateY(-1px);
+}
+.btn-primary-glow:active {
+  transform: scale(0.97);
+}
+
+.btn-amber-glow {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px -1px rgba(245, 158, 11, 0.35);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-amber-glow:hover {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  box-shadow: 0 6px 20px -2px rgba(245, 158, 11, 0.5);
+  transform: translateY(-1px);
+}
+.btn-amber-glow:active {
+  transform: scale(0.97);
+}
+
+.btn-rose-glow {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px -1px rgba(244, 63, 94, 0.35);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-rose-glow:hover {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+  box-shadow: 0 6px 20px -2px rgba(244, 63, 94, 0.5);
+  transform: translateY(-1px);
+}
+.btn-rose-glow:active {
+  transform: scale(0.97);
+}
+
+/* Subtle Shimmer Effect on Prominent Badges */
+.shimmer-text {
+  background: linear-gradient(90deg, #f59e0b 0%, #fef08a 50%, #f59e0b 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Modern Input Focus Glow */
+.input-modern:focus {
+  outline: none;
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+/* Pill category active glow */
+.cat-btn.active {
+  background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px -1px rgba(2, 132, 199, 0.4) !important;
+}
+
+/* =========================================================================
+   GOLDEN LIGHT & GLOW EFFECTS (ពន្លឺពណ៌មាសសម្រាប់ WEB USER)
+   ========================================================================= */
+@keyframes goldenPulseSlow {
+  0%, 100% {
+    opacity: 0.70;
+    transform: translateX(-50%) scale(1);
+    filter: blur(28px);
+  }
+  50% {
+    opacity: 0.98;
+    transform: translateX(-50%) scale(1.08);
+    filter: blur(36px);
+  }
+}
+
+@keyframes goldenShimmerFlow {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes goldenSparkleBadge {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.45), 0 0 20px rgba(251, 191, 36, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(245, 158, 11, 0.85), 0 0 35px rgba(251, 191, 36, 0.55);
+  }
+}
+
+.golden-ambient-ray {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1100px;
+  height: 520px;
+  background: radial-gradient(ellipse 65% 65% at 50% 30%, rgba(251, 191, 36, 0.38) 0%, rgba(245, 158, 11, 0.20) 45%, rgba(217, 119, 6, 0.06) 75%, transparent 100%);
+  pointer-events: none;
+  filter: blur(25px);
+  animation: goldenPulseSlow 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+.golden-center-glow {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 550px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(254, 240, 138, 0.28) 0%, rgba(245, 158, 11, 0.18) 45%, transparent 75%);
+  pointer-events: none;
+  filter: blur(38px);
+  z-index: 2;
+  animation: goldenPulseSlow 4.5s ease-in-out infinite reverse;
+}
+
+.golden-light-strip {
+  height: 2.5px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(245, 158, 11, 0.35) 15%, #fbbf24 45%, #fef08a 50%, #fbbf24 55%, rgba(245, 158, 11, 0.35) 85%, transparent 100%);
+  background-size: 200% 100%;
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.75), 0 0 24px rgba(245, 158, 11, 0.45);
+  animation: goldenShimmerFlow 5s linear infinite;
+}
+
+.golden-glow-box {
+  border: 1px solid rgba(251, 191, 36, 0.45) !important;
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.35), 0 20px 45px rgba(0, 0, 0, 0.45) !important;
+}
+
+.golden-badge-glow {
+  animation: goldenSparkleBadge 3s ease-in-out infinite;
+}
+
+/* =========================================================================
+   MODE-SPECIFIC ANIMATED ILLUSTRATIONS (រូបការបង្រៀន & ស្វ័យសិក្សាមានចលនា)
+   ========================================================================= */
+
+/* Display switching between Day Mode and Night Mode */
+.day-mode-visual {
+  display: block !important;
+}
+.night-mode-visual {
+  display: none !important;
+}
+
+body.night-mode .day-mode-visual {
+  display: none !important;
+}
+body.night-mode .night-mode-visual {
+  display: block !important;
+}
+
+/* Day Mode: Teaching Motion Animation */
+@keyframes subtleTeachingMotion {
+  0% {
+    transform: scale(1) translateY(0);
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    transform: scale(1.035) translateY(-3px);
+    filter: brightness(1.05) saturate(1.06);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    filter: brightness(1) saturate(1);
+  }
+}
+
+.animate-teaching-motion {
+  animation: subtleTeachingMotion 8s ease-in-out infinite;
+}
+
+/* Day Mode: Animated Sunbeam Sweep */
+@keyframes daySunbeamSweep {
+  0% {
+    opacity: 0.15;
+    transform: rotate(-18deg) translateX(-120%);
+  }
+  50% {
+    opacity: 0.55;
+    transform: rotate(-18deg) translateX(30%);
+  }
+  100% {
+    opacity: 0.15;
+    transform: rotate(-18deg) translateX(150%);
+  }
+}
+
+.animated-day-sunbeam {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent 0%, rgba(254, 240, 138, 0.08) 35%, rgba(251, 191, 36, 0.35) 50%, rgba(254, 240, 138, 0.08) 65%, transparent 100%);
+  animation: daySunbeamSweep 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Night Mode: Self-Study Breathing Motion & Glow */
+@keyframes subtleNightStudyMotion {
+  0% {
+    transform: scale(1) translateY(0);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.03) translateY(-3px);
+    filter: brightness(1.08) drop-shadow(0 0 16px rgba(245, 158, 11, 0.35));
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    filter: brightness(1);
+  }
+}
+
+.animate-night-study-motion {
+  animation: subtleNightStudyMotion 7.5s ease-in-out infinite;
+}
+
+/* Night Mode: Lamp Glow Pulse */
+@keyframes nightStudyLampPulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.90;
+    transform: scale(1.15);
+  }
+}
+
+.animated-study-lamp-glow {
+  position: absolute;
+  top: 18%;
+  left: 18%;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.50) 0%, rgba(245, 158, 11, 0.20) 45%, transparent 75%);
+  border-radius: 9999px;
+  filter: blur(20px);
+  animation: nightStudyLampPulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Night Mode: Starlight Twinkle in Window */
+@keyframes nightStarlightTwinkle {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.animated-study-stars {
+  position: absolute;
+  top: 4%;
+  right: 6%;
+  width: 45%;
+  height: 50%;
+  background: radial-gradient(circle at 75% 20%, rgba(254, 240, 138, 0.6) 0%, transparent 25%),
+              radial-gradient(circle at 45% 35%, rgba(255, 255, 255, 0.5) 0%, transparent 18%),
+              radial-gradient(circle at 85% 55%, rgba(254, 240, 138, 0.4) 0%, transparent 15%);
+  animation: nightStarlightTwinkle 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Floating Seasonal Doodles Adaptation */
+body:not(.night-mode) #hero-decor-bg .night-doodle {
+  display: none !important;
+}
+body:not(.night-mode) #hero-decor-bg .day-doodle {
+  display: inline-block !important;
+}
+body.night-mode #hero-decor-bg .day-doodle {
+  display: none !important;
+}
+body.night-mode #hero-decor-bg .night-doodle {
+  display: inline-block !important;
+}
+
+/* =========================================================================
+   BEFORE & AFTER CLASSROOM TRANSFORMATION SLIDER STYLES
+   ========================================================================= */
+#ba-slider-container {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: ew-resize;
+}
+
+#ba-range-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 44px;
+  height: 100%;
+  cursor: ew-resize;
+  opacity: 0;
+}
+
+#ba-range-slider::-moz-range-thumb {
+  width: 44px;
+  height: 100%;
+  cursor: ew-resize;
+  opacity: 0;
+}
+
+#ba-handle {
+  transition: left 0.04s linear;
+}
+
+#ba-before-img {
+  transition: clip-path 0.04s linear;
+}
+
+/* =========================================================================
+   UNIVERSAL GOLDEN SHADOWS FOR TAILWIND SHADOW CLASSES (គ្រប់ OBJECT ទាំងអស់)
+   ========================================================================= */
+.shadow-2xs {
+  box-shadow: 0 1px 3px rgba(245, 158, 11, 0.20), 0 1px 2px rgba(217, 119, 6, 0.10) !important;
+}
+
+.shadow-xs {
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.22), 0 1px 3px rgba(217, 119, 6, 0.12) !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 3px 10px rgba(245, 158, 11, 0.24), 0 1px 3px rgba(217, 119, 6, 0.14) !important;
+}
+
+.shadow {
+  box-shadow: 0 4px 14px -2px rgba(245, 158, 11, 0.26), 0 2px 6px -1px rgba(217, 119, 6, 0.16) !important;
+}
+
+.shadow-md {
+  box-shadow: 0 6px 18px -2px rgba(245, 158, 11, 0.28), 0 3px 8px -2px rgba(217, 119, 6, 0.18) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 12px 28px -4px rgba(245, 158, 11, 0.32), 0 6px 14px -3px rgba(217, 119, 6, 0.20) !important;
+}
+
+.shadow-xl {
+  box-shadow: 0 20px 38px -6px rgba(245, 158, 11, 0.36), 0 8px 18px -4px rgba(217, 119, 6, 0.22) !important;
+}
+
+.shadow-2xl {
+  box-shadow: 0 28px 55px -10px rgba(245, 158, 11, 0.42), 0 12px 26px -5px rgba(217, 119, 6, 0.26) !important;
+}
+
+/* =========================================================================
+   GOLDEN SHADOWS & GLOW ON ALL TOOLS (TOOLBARS, BUTTONS, CONTROLS)
+   ========================================================================= */
+
+/* 1. Header Tools & Action Buttons */
+header.glass-nav {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 3px 14px rgba(245, 158, 11, 0.18) !important;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.30) !important;
+}
+
+header button,
+header a.inline-flex,
+header a.flex,
+#top-promo-bar button,
+#top-promo-bar a {
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.18);
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+header button:hover,
+header a.inline-flex:hover,
+header a.flex:hover,
+#top-promo-bar button:hover,
+#top-promo-bar a:hover {
+  border-color: rgba(245, 158, 11, 0.65) !important;
+  box-shadow: 0 5px 18px rgba(245, 158, 11, 0.38), 0 0 12px rgba(251, 191, 36, 0.35) !important;
+  transform: translateY(-1px);
+}
+
+#btn-open-quick-order,
+.btn-amber-glow {
+  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.45), 0 0 14px rgba(251, 191, 36, 0.35) !important;
+  border: 1px solid rgba(251, 191, 36, 0.55) !important;
+}
+
+#btn-open-quick-order:hover,
+.btn-amber-glow:hover {
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.60), 0 0 20px rgba(251, 191, 36, 0.50) !important;
+  border-color: #fbbf24 !important;
+  transform: translateY(-2px);
+}
+
+/* 2. Filter Bar Container & Search Tools */
+#search-filter-section,
+.bg-white\/85 {
+  border: 1.5px solid rgba(245, 158, 11, 0.30) !important;
+  box-shadow: 0 8px 26px -4px rgba(245, 158, 11, 0.20), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+#search-input {
+  border: 1.5px solid rgba(245, 158, 11, 0.32) !important;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.14) !important;
+  transition: all 0.24s ease;
+}
+
+#search-input:focus {
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25), 0 6px 20px rgba(245, 158, 11, 0.32) !important;
+}
+
+/* Category Filter Buttons */
+.cat-btn {
+  border: 1px solid rgba(245, 158, 11, 0.26) !important;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.16) !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cat-btn:hover {
+  border-color: rgba(245, 158, 11, 0.60) !important;
+  box-shadow: 0 5px 16px rgba(245, 158, 11, 0.35), 0 0 10px rgba(251, 191, 36, 0.30) !important;
+  transform: translateY(-1px);
+}
+
+.cat-btn.active {
+  border-color: #f59e0b !important;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45), 0 0 16px rgba(251, 191, 36, 0.40) !important;
+}
+
+/* Size Filter Buttons */
+.size-filter-btn {
+  border: 1px solid rgba(245, 158, 11, 0.24) !important;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.14) !important;
+  transition: all 0.22s ease;
+}
+
+.size-filter-btn:hover {
+  border-color: rgba(245, 158, 11, 0.55) !important;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.30) !important;
+  transform: translateY(-1px);
+}
+
+.size-filter-btn.active {
+  border-color: #f59e0b !important;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.40) !important;
+}
+
+/* Sort Select Dropdown */
+#sort-select {
+  border: 1.5px solid rgba(245, 158, 11, 0.30) !important;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.14) !important;
+  transition: all 0.22s ease;
+}
+
+#sort-select:focus {
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.22), 0 4px 14px rgba(245, 158, 11, 0.30) !important;
+}
+
+/* Grid & List View Toggle Buttons */
+#grid-view-btn,
+#list-view-btn {
+  border: 1px solid rgba(245, 158, 11, 0.26) !important;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.14) !important;
+}
+
+#grid-view-btn:hover,
+#list-view-btn:hover {
+  border-color: rgba(245, 158, 11, 0.55) !important;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.32) !important;
+}
+
+/* 3. Lightbox Toolbar & Action Tools */
+#image-lightbox-modal .flex.items-center.gap-2,
+#image-lightbox-modal .bg-slate-900\/80,
+#image-lightbox-modal .bg-black\/60 {
+  border: 1.5px solid rgba(245, 158, 11, 0.45) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 25px rgba(245, 158, 11, 0.38) !important;
+}
+
+#image-lightbox-modal button,
+#lightbox-download-btn,
+#lightbox-zoom-in,
+#lightbox-zoom-out,
+#lightbox-zoom-reset,
+#lightbox-close-btn {
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35), 0 0 10px rgba(251, 191, 36, 0.30) !important;
+  border: 1px solid rgba(245, 158, 11, 0.45) !important;
+  transition: all 0.22s ease;
+}
+
+#image-lightbox-modal button:hover,
+#lightbox-download-btn:hover,
+#lightbox-zoom-in:hover,
+#lightbox-zoom-out:hover,
+#lightbox-zoom-reset:hover,
+#lightbox-close-btn:hover {
+  box-shadow: 0 6px 22px rgba(245, 158, 11, 0.65), 0 0 18px rgba(251, 191, 36, 0.55) !important;
+  border-color: #fbbf24 !important;
+  transform: scale(1.05);
+}
+
+#lightbox-download-btn {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.55), 0 0 16px rgba(251, 191, 36, 0.45) !important;
+}
+
+/* 4. Floating Tools (Telegram & Mobile Bottom Nav) */
+#floating-telegram {
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35), 0 0 22px rgba(245, 158, 11, 0.70), 0 0 38px rgba(251, 191, 36, 0.45) !important;
+  border: 2px solid rgba(251, 191, 36, 0.75) !important;
+  animation: goldenPulseSlow 4s ease-in-out infinite;
+}
+
+#floating-telegram:hover {
+  box-shadow: 0 10px 32px rgba(37, 99, 235, 0.45), 0 0 35px rgba(245, 158, 11, 0.90), 0 0 55px rgba(251, 191, 36, 0.70) !important;
+  transform: scale(1.08);
+}
+
+#mobile-bottom-nav {
+  border-top: 1.5px solid rgba(245, 158, 11, 0.32) !important;
+  box-shadow: 0 -4px 22px rgba(245, 158, 11, 0.18), 0 -2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+#mobile-bottom-nav button:active {
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.45) !important;
+}
+
+/* =========================================================================
+   GOLDEN SHADOWS ON ALL OBJECTS (CARDS, MODALS, DRAWERS, BADGES)
+   ========================================================================= */
+
+/* 5. Product Cards & Card Hover Objects */
+#products-grid > div,
+.card-hover-effect {
+  border: 1.5px solid rgba(245, 158, 11, 0.28) !important;
+  box-shadow: 0 4px 16px -2px rgba(245, 158, 11, 0.20), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#products-grid > div:hover,
+.card-hover-effect:hover {
+  transform: translateY(-5px) !important;
+  border-color: rgba(245, 158, 11, 0.70) !important;
+  box-shadow: 0 20px 38px -6px rgba(245, 158, 11, 0.34), 0 8px 18px -4px rgba(217, 119, 6, 0.22), 0 0 22px rgba(251, 191, 36, 0.32) !important;
+}
+
+/* Product Card Action Buttons */
+#products-grid button,
+.card-hover-effect button,
+.btn-wishlist {
+  box-shadow: 0 3px 8px rgba(245, 158, 11, 0.22);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  transition: all 0.22s ease;
+}
+
+#products-grid button:hover,
+.card-hover-effect button:hover,
+.btn-wishlist:hover {
+  box-shadow: 0 5px 18px rgba(245, 158, 11, 0.45), 0 0 12px rgba(251, 191, 36, 0.35) !important;
+  border-color: rgba(245, 158, 11, 0.65) !important;
+  transform: translateY(-1px);
+}
+
+/* 6. Modals, Drawers & Dialog Objects */
+.modal-backdrop > div,
+#cart-drawer,
+#website-qr-card-view,
+#cart-wholesale-tier-card {
+  border: 1.5px solid rgba(245, 158, 11, 0.40) !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45), 0 0 35px rgba(245, 158, 11, 0.30), 0 0 65px rgba(251, 191, 36, 0.20) !important;
+}
+
+/* 7. Badges, Tags, Pills & Feature Chips */
+.badge-category,
+.badge-decor,
+.badge-teaching,
+.badge-games,
+.size-tag,
+#hero-badge,
+#hero-coupon-chip,
+#top-promo-tag {
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.24);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.size-tag:hover {
+  border-color: rgba(245, 158, 11, 0.60);
+  box-shadow: 0 3px 12px rgba(245, 158, 11, 0.32);
+}
+
+/* 8. Hero Section Banner Object */
+#hero-section .max-w-3xl {
+  border: 1.5px solid rgba(245, 158, 11, 0.45) !important;
+  box-shadow: 0 0 50px rgba(245, 158, 11, 0.35), 0 20px 45px rgba(0, 0, 0, 0.55) !important;
+}
+
+
+/* =========================================================================
+   PRINT STYLES FOR ORDER INVOICE
+   ========================================================================= */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html,
+  body,
+  body.modal-open {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  body.printing-invoice,
+  body:has(#order-invoice-modal:not(.hidden)) {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide app shell and navigation elements */
+  body.printing-invoice header,
+  body.printing-invoice nav,
+  body.printing-invoice main,
+  body.printing-invoice #product-modal,
+  body.printing-invoice #create-invoice-modal,
+  body.printing-invoice #admin-image-preview-modal,
+  body.printing-invoice #toast-container,
+  body.printing-invoice .no-print,
+  body.printing-invoice #invoice-modal-header,
+  body.printing-invoice #invoice-modal-footer,
+  body:has(#order-invoice-modal:not(.hidden)) header,
+  body:has(#order-invoice-modal:not(.hidden)) nav,
+  body:has(#order-invoice-modal:not(.hidden)) main,
+  body:has(#order-invoice-modal:not(.hidden)) #product-modal,
+  body:has(#order-invoice-modal:not(.hidden)) #create-invoice-modal,
+  body:has(#order-invoice-modal:not(.hidden)) #admin-image-preview-modal,
+  body:has(#order-invoice-modal:not(.hidden)) #toast-container,
+  body:has(#order-invoice-modal:not(.hidden)) .no-print,
+  body:has(#order-invoice-modal:not(.hidden)) #invoice-modal-header,
+  body:has(#order-invoice-modal:not(.hidden)) #invoice-modal-footer {
+    display: none !important;
+  }
+
+  /* Reset order-invoice-modal for clean page printing */
+  body.printing-invoice #order-invoice-modal,
+  body:has(#order-invoice-modal:not(.hidden)) #order-invoice-modal {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  body.printing-invoice #order-invoice-modal > div,
+  body:has(#order-invoice-modal:not(.hidden)) #order-invoice-modal > div {
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+
+  body.printing-invoice #invoice-printable-area,
+  body:has(#order-invoice-modal:not(.hidden)) #invoice-printable-area {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    max-height: none !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Avoid page breaks inside invoice slips */
+  .invoice-slip {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    box-shadow: none !important;
+  }
+
+  /* Dual Invoice Layout in Print (ដូចគំរូ PDF វ័យ គឹមលាង) */
+  body.printing-dual .invoice-dual-wrapper {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  @page {
+    margin: 0.6cm;
+    size: auto;
+  }
+
+  body.printing-dual {
+    @page {
+      size: landscape;
+      margin: 0.4cm;
+    }
+  }
+}
+
+/* =========================================================================
+   PRODUCT FRAME COLOR STYLES (ប្រភេទពណ៌ស៊ុម)
+   ========================================================================= */
+.frame-box {
+  position: relative;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+/* None / Standard */
+.frame-none {
+  border: none;
+}
+
+/* Gold Frame (ស៊ុមពណ៌មាស) */
+.frame-gold {
+  border: 5px solid #d4af37 !important;
+  box-shadow: inset 0 0 0 1px #fff3b0, inset 0 0 6px rgba(180, 130, 20, 0.45), 0 4px 12px rgba(180, 130, 20, 0.25) !important;
+}
+.frame-gold-lg {
+  border: 10px solid #d4af37 !important;
+  box-shadow: inset 0 0 0 2px #fff3b0, inset 0 0 10px rgba(180, 130, 20, 0.55), 0 8px 24px rgba(180, 130, 20, 0.35) !important;
+}
+.frame-gold-sm {
+  border: 3px solid #d4af37 !important;
+  box-shadow: inset 0 0 0 1px #fff3b0, 0 2px 4px rgba(180, 130, 20, 0.2) !important;
+}
+
+/* Wood Frame (ស៊ុមឈើធម្មជាតិ) */
+.frame-wood {
+  border: 5px solid #8b5a2b !important;
+  box-shadow: inset 0 0 0 1px #ba8448, inset 0 0 6px rgba(50, 25, 5, 0.55), 0 4px 12px rgba(60, 30, 10, 0.28) !important;
+}
+.frame-wood-lg {
+  border: 10px solid #8b5a2b !important;
+  box-shadow: inset 0 0 0 2px #ba8448, inset 0 0 12px rgba(50, 25, 5, 0.65), 0 8px 24px rgba(60, 30, 10, 0.38) !important;
+}
+.frame-wood-sm {
+  border: 3px solid #8b5a2b !important;
+  box-shadow: inset 0 0 0 1px #ba8448, 0 2px 4px rgba(60, 30, 10, 0.22) !important;
+}
+
+/* Modern Black Frame (ស៊ុមពណ៌ខ្មៅ) */
+.frame-black {
+  border: 5px solid #0f172a !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(15, 23, 42, 0.35) !important;
+}
+.frame-black-lg {
+  border: 10px solid #0f172a !important;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25), inset 0 0 10px rgba(0, 0, 0, 0.85), 0 8px 24px rgba(15, 23, 42, 0.45) !important;
+}
+.frame-black-sm {
+  border: 3px solid #0f172a !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), 0 2px 4px rgba(15, 23, 42, 0.25) !important;
+}
+
+/* Clean White Frame (ស៊ុមពណ៌ស) */
+.frame-white {
+  border: 5px solid #ffffff !important;
+  box-shadow: inset 0 0 0 1px #cbd5e1, 0 0 0 1px #e2e8f0, 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+}
+.frame-white-lg {
+  border: 10px solid #ffffff !important;
+  box-shadow: inset 0 0 0 2px #cbd5e1, 0 0 0 1px #e2e8f0, 0 8px 26px rgba(0, 0, 0, 0.18) !important;
+}
+.frame-white-sm {
+  border: 3px solid #ffffff !important;
+  box-shadow: inset 0 0 0 1px #cbd5e1, 0 2px 5px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Silver Frame (ស៊ុមពណ៌ប្រាក់) */
+.frame-silver {
+  border: 5px solid #94a3b8 !important;
+  box-shadow: inset 0 0 0 1px #e2e8f0, inset 0 0 5px rgba(255, 255, 255, 0.7), 0 4px 12px rgba(100, 116, 139, 0.28) !important;
+}
+.frame-silver-lg {
+  border: 10px solid #94a3b8 !important;
+  box-shadow: inset 0 0 0 2px #f8fafc, inset 0 0 10px rgba(255, 255, 255, 0.85), 0 8px 24px rgba(100, 116, 139, 0.35) !important;
+}
+.frame-silver-sm {
+  border: 3px solid #94a3b8 !important;
+  box-shadow: inset 0 0 0 1px #f8fafc, 0 2px 4px rgba(100, 116, 139, 0.22) !important;
+}
+
+/* Blue Frame (ស៊ុមពណ៌ខៀវ) */
+.frame-blue {
+  border: 5px solid #0284c7 !important;
+  box-shadow: inset 0 0 0 1px #bae6fd, inset 0 0 5px rgba(3, 105, 161, 0.45), 0 4px 12px rgba(2, 132, 199, 0.28) !important;
+}
+.frame-blue-lg {
+  border: 10px solid #0284c7 !important;
+  box-shadow: inset 0 0 0 2px #bae6fd, inset 0 0 10px rgba(3, 105, 161, 0.55), 0 8px 24px rgba(2, 132, 199, 0.35) !important;
+}
+.frame-blue-sm {
+  border: 3px solid #0284c7 !important;
+  box-shadow: inset 0 0 0 1px #bae6fd, 0 2px 4px rgba(2, 132, 199, 0.22) !important;
+}
+
+/* Red Frame (ស៊ុមពណ៌ក្រហម) */
+.frame-red {
+  border: 5px solid #e11d48 !important;
+  box-shadow: inset 0 0 0 1px #fecdd3, inset 0 0 5px rgba(190, 18, 60, 0.45), 0 4px 12px rgba(225, 29, 72, 0.28) !important;
+}
+.frame-red-lg {
+  border: 10px solid #e11d48 !important;
+  box-shadow: inset 0 0 0 2px #fecdd3, inset 0 0 10px rgba(190, 18, 60, 0.55), 0 8px 24px rgba(225, 29, 72, 0.35) !important;
+}
+.frame-red-sm {
+  border: 3px solid #e11d48 !important;
+  box-shadow: inset 0 0 0 1px #fecdd3, 0 2px 4px rgba(225, 29, 72, 0.22) !important;
+}
+
+/* Green Frame (ស៊ុមពណ៌បៃតង) */
+.frame-green {
+  border: 5px solid #059669 !important;
+  box-shadow: inset 0 0 0 1px #a7f3d0, inset 0 0 5px rgba(4, 120, 87, 0.45), 0 4px 12px rgba(5, 150, 105, 0.28) !important;
+}
+.frame-green-lg {
+  border: 10px solid #059669 !important;
+  box-shadow: inset 0 0 0 2px #a7f3d0, inset 0 0 10px rgba(4, 120, 87, 0.55), 0 8px 24px rgba(5, 150, 105, 0.35) !important;
+}
+.frame-green-sm {
+  border: 3px solid #059669 !important;
+  box-shadow: inset 0 0 0 1px #a7f3d0, 0 2px 4px rgba(5, 150, 105, 0.22) !important;
+}
+
+/* Purple Frame (ស៊ុមពណ៌ស្វាយ) */
+.frame-purple {
+  border: 5px solid #7c3aed !important;
+  box-shadow: inset 0 0 0 1px #ddd6fe, inset 0 0 5px rgba(109, 40, 217, 0.45), 0 4px 12px rgba(124, 58, 237, 0.28) !important;
+}
+.frame-purple-lg {
+  border: 10px solid #7c3aed !important;
+  box-shadow: inset 0 0 0 2px #ddd6fe, inset 0 0 10px rgba(109, 40, 217, 0.55), 0 8px 24px rgba(124, 58, 237, 0.35) !important;
+}
+.frame-purple-sm {
+  border: 3px solid #7c3aed !important;
+  box-shadow: inset 0 0 0 1px #ddd6fe, 0 2px 4px rgba(124, 58, 237, 0.22) !important;
+}
+
+/* Hide scrollbar for clean horizontal pill bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Theme Styles & Floating Seasonal Animations */
+@keyframes floatAnim {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(4deg);
+  }
+}
+
+.animate-float {
+  animation: floatAnim 4s ease-in-out infinite;
+}
+
+/* Theme 1: Khmer Heritage, Angkor & Nature Education (រចនាប័ទ្មខ្មែរ-អង្គរ & ធម្មជាតិសិក្សា) */
+body.theme-khmer {
+  background-color: #eaf3ee;
+  background-image: 
+    linear-gradient(rgba(244, 250, 246, 0.85), rgba(244, 250, 246, 0.88)),
+    url('khmer_edu_bg.jpg');
+  background-attachment: fixed;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Theme 2: School Season (រដូវកាលសិក្សា) */
+body.theme-school {
+  background-color: #edf5fc;
+  background-image: 
+    linear-gradient(rgba(240, 247, 253, 0.85), rgba(240, 247, 253, 0.88)),
+    url('school_season_bg.jpg');
+  background-attachment: fixed;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Theme 3: Vacation Season (រដូវកាលវិស្សមកាល - ការតុបតែងថ្នាក់ & សិក្សាអនឡាញ) */
+body.theme-vacation {
+  background-color: #fdfbf7;
+  background-image: 
+    linear-gradient(rgba(254, 252, 248, 0.85), rgba(254, 252, 248, 0.88)),
+    url('vacation_season_bg.jpg');
+  background-attachment: fixed;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Responsive Background Fix for Mobile (iOS Safari & Android) */
+@media (max-width: 768px) {
+  body,
+  body.theme-khmer,
+  body.theme-school,
+  body.theme-vacation {
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center top !important;
+  }
+}
+
+/* =========================================================================
+   PHASE 2 ENHANCEMENTS: WISHLIST, KHQR, SLIP UPLOAD, LOW STOCK, ANALYTICS
+   ========================================================================= */
+
+/* Heart Pulse & Wishlist */
+@keyframes heartPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+.animate-heart-pop {
+  animation: heartPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-wishlist {
+  transition: all 0.2s ease;
+}
+
+.btn-wishlist:hover {
+  transform: scale(1.12);
+}
+
+.btn-wishlist.active {
+  color: #f43f5e !important;
+}
+
+/* Low Stock Pulse Badge */
+@keyframes lowStockPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(0.97); }
+}
+
+.badge-low-stock {
+  animation: lowStockPulse 2.5s infinite ease-in-out;
+}
+
+/* KHQR Card & Frame */
+.khqr-container {
+  background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(211, 47, 47, 0.4);
+}
+
+.khqr-container::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+/* Slip Upload Dropzone */
+.slip-upload-zone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 1rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background-color: #f8fafc;
+}
+
+.slip-upload-zone:hover, .slip-upload-zone.dragover {
+  border-color: #0284c7;
+  background-color: #f0f9ff;
+}
+
+/* Analytics Progress Meter */
+.analytics-bar {
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================================================
+   PHASE 3 STYLES: SHIPPING WAYBILL, ORDER TRACKER & ANNOUNCEMENT BAR
+   ========================================================================= */
+
+/* Marquee Top Announcement Bar */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+}
+
+.animate-marquee-smooth {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marqueeScroll 30s linear infinite;
+}
+
+.animate-marquee-smooth:hover {
+  animation-play-state: paused;
+}
+
+/* Shipping Waybill Card (10cm x 10cm or A6 Parcel Label) */
+.shipping-waybill {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  border: 2px solid #0f172a;
+  border-radius: 14px;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: 'Kantumruy Pro', 'Khmer OS', sans-serif;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Tracking Stepper */
+.tracking-connector {
+  height: 3px;
+  flex: 1;
+  background-color: #e2e8f0;
+  transition: background-color 0.3s ease;
+}
+.tracking-connector.active {
+  background-color: #0284c7;
+}
+
+/* Print Rules for Shipping Label, Customer Receipt, Catalogue & Quotation (Universal Mobile & Desktop) */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html,
+  body,
+  body.modal-open {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* 1. CUSTOMER RECEIPT PRINTING */
+  body.printing-receipt {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100% !important;
+  }
+
+  body.printing-receipt header,
+  body.printing-receipt nav,
+  body.printing-receipt main,
+  body.printing-receipt footer,
+  body.printing-receipt #floating-telegram,
+  body.printing-receipt .mobile-bottom-nav,
+  body.printing-receipt #toast-container,
+  body.printing-receipt #cart-drawer,
+  body.printing-receipt #cart-drawer-backdrop,
+  body.printing-receipt .modal-backdrop:not(#customer-receipt-modal),
+  body.printing-receipt #customer-receipt-modal-header,
+  body.printing-receipt #customer-receipt-modal-footer,
+  body.printing-receipt .no-print {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  body.printing-receipt #customer-receipt-modal {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    z-index: auto !important;
+  }
+
+  body.printing-receipt #customer-receipt-modal > div {
+    position: static !important;
+    display: block !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+  }
+
+  body.printing-receipt #customer-receipt-printable-area {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    visibility: visible !important;
+  }
+
+  body.printing-receipt #customer-receipt-printable-area * {
+    visibility: visible !important;
+  }
+
+  body.printing-receipt #customer-receipt-printable-area > div {
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+    margin: 0 auto !important;
+    max-width: 600px !important;
+  }
+
+  /* 2. CATALOGUE PRINTING */
+  body.printing-catalogue {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.printing-catalogue header,
+  body.printing-catalogue nav,
+  body.printing-catalogue main,
+  body.printing-catalogue footer,
+  body.printing-catalogue #floating-telegram,
+  body.printing-catalogue .mobile-bottom-nav,
+  body.printing-catalogue #toast-container,
+  body.printing-catalogue #cart-drawer,
+  body.printing-catalogue #cart-drawer-backdrop,
+  body.printing-catalogue .modal-backdrop:not(#product-catalogue-modal),
+  body.printing-catalogue #product-catalogue-modal > div > div:first-child,
+  body.printing-catalogue #product-catalogue-modal > div > div:last-child,
+  body.printing-catalogue .no-print {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  body.printing-catalogue #product-catalogue-modal {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    z-index: auto !important;
+  }
+
+  body.printing-catalogue #product-catalogue-modal > div {
+    position: static !important;
+    display: block !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body.printing-catalogue #catalogue-printable-area {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    visibility: visible !important;
+  }
+
+  body.printing-catalogue #catalogue-printable-area * {
+    visibility: visible !important;
+  }
+
+  /* 3. SCHOOL QUOTATION PRINTING */
+  body.printing-quotation {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.printing-quotation header,
+  body.printing-quotation nav,
+  body.printing-quotation main,
+  body.printing-quotation footer,
+  body.printing-quotation #floating-telegram,
+  body.printing-quotation .mobile-bottom-nav,
+  body.printing-quotation #toast-container,
+  body.printing-quotation #cart-drawer,
+  body.printing-quotation #cart-drawer-backdrop,
+  body.printing-quotation .modal-backdrop:not(#school-quotation-modal),
+  body.printing-quotation #school-quotation-modal > div > div:first-child,
+  body.printing-quotation #school-quotation-modal > div > div:last-child,
+  body.printing-quotation .no-print {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  body.printing-quotation #school-quotation-modal {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    z-index: auto !important;
+  }
+
+  body.printing-quotation #school-quotation-modal > div {
+    position: static !important;
+    display: block !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body.printing-quotation #quotation-printable-area {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    visibility: visible !important;
+  }
+
+  body.printing-quotation #quotation-printable-area * {
+    visibility: visible !important;
+  }
+
+  /* 4. ADMIN SHIPPING WAYBILL */
+  body.printing-waybill,
+  body:has(#shipping-label-modal:not(.hidden)) {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #000000 !important;
+    overflow: visible !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  body.printing-waybill #admin-layout-wrapper,
+  body:has(#shipping-label-modal:not(.hidden)) #admin-layout-wrapper,
+  body.printing-waybill header,
+  body:has(#shipping-label-modal:not(.hidden)) header,
+  body.printing-waybill nav,
+  body:has(#shipping-label-modal:not(.hidden)) nav,
+  body.printing-waybill main,
+  body:has(#shipping-label-modal:not(.hidden)) main,
+  body.printing-waybill aside,
+  body:has(#shipping-label-modal:not(.hidden)) aside,
+  body.printing-waybill footer,
+  body:has(#shipping-label-modal:not(.hidden)) footer,
+  body.printing-waybill #admin-sidebar,
+  body:has(#shipping-label-modal:not(.hidden)) #admin-sidebar,
+  body.printing-waybill #toast-container,
+  body:has(#shipping-label-modal:not(.hidden)) #toast-container,
+  body.printing-waybill .modal-backdrop:not(#shipping-label-modal),
+  body:has(#shipping-label-modal:not(.hidden)) .modal-backdrop:not(#shipping-label-modal),
+  body.printing-waybill .no-print,
+  body:has(#shipping-label-modal:not(.hidden)) .no-print,
+  body.printing-waybill #shipping-label-modal-header,
+  body:has(#shipping-label-modal:not(.hidden)) #shipping-label-modal-header,
+  body.printing-waybill #shipping-label-modal-footer,
+  body:has(#shipping-label-modal:not(.hidden)) #shipping-label-modal-footer {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  body.printing-waybill #shipping-label-modal,
+  body:has(#shipping-label-modal:not(.hidden)) #shipping-label-modal {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+
+  body.printing-waybill #shipping-label-modal > div,
+  body:has(#shipping-label-modal:not(.hidden)) #shipping-label-modal > div {
+    display: block !important;
+    position: static !important;
+    visibility: visible !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+
+  body.printing-waybill #shipping-label-printable-area,
+  body:has(#shipping-label-modal:not(.hidden)) #shipping-label-printable-area {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    visibility: visible !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+
+  body.printing-waybill #shipping-label-printable-area *,
+  body:has(#shipping-label-modal:not(.hidden)) #shipping-label-printable-area * {
+    visibility: visible !important;
+  }
+
+  body.printing-waybill .shipping-waybill,
+  body:has(#shipping-label-modal:not(.hidden)) .shipping-waybill {
+    display: block !important;
+    visibility: visible !important;
+    width: 100% !important;
+    max-width: 100mm !important;
+    margin: 0 auto !important;
+    border: 2px solid #000000 !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  body.printing-waybill.label-size-10x15 .shipping-waybill,
+  body:has(#shipping-label-modal:not(.hidden)).label-size-10x15 .shipping-waybill {
+    max-width: 100mm !important;
+    min-height: 140mm !important;
+  }
+
+  body.printing-waybill.label-size-a6 .shipping-waybill,
+  body:has(#shipping-label-modal:not(.hidden)).label-size-a6 .shipping-waybill {
+    max-width: 140mm !important;
+  }
+
+  /* 5. ADMIN PRODUCT QR LABELS */
+  body.printing-qr-labels {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  body.printing-qr-labels header,
+  body.printing-qr-labels nav,
+  body.printing-qr-labels main,
+  body.printing-qr-labels .no-print,
+  body.printing-qr-labels #product-qr-modal > div > div:first-child,
+  body.printing-qr-labels #product-qr-modal > div > div:last-child {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  body.printing-qr-labels #product-qr-modal {
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  body.printing-qr-labels #product-qr-printable-area {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: visible !important;
+  }
+}
+
+/* ==========================================================================
+   PHASE 4 STYLES: CATALOGUE, SCHOOL QUOTATION & QR LABELS
+   ========================================================================== */
+
+/* A4 Catalogue Styling */
+.catalogue-page {
+  background: white;
+  color: #0f172a;
+  font-family: 'Kantumruy Pro', 'Khmer OS', sans-serif;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Official Quotation Document */
+.quotation-document {
+  background: white;
+  color: #0f172a;
+  font-family: 'Kantumruy Pro', 'Khmer OS', sans-serif;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Product QR / Barcode Stickers Sheet */
+.qr-labels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.qr-label-card {
+  border: 1.5px dashed #64748b;
+  border-radius: 10px;
+  padding: 8px 10px;
+  background: #ffffff;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Barcode representation simulation */
+.barcode-strip {
+  height: 24px;
+  background: repeating-linear-gradient(
+    90deg,
+    #0f172a,
+    #0f172a 2px,
+    transparent 2px,
+    transparent 4px,
+    #0f172a 4px,
+    #0f172a 7px,
+    transparent 7px,
+    transparent 9px,
+    #0f172a 9px,
+    #0f172a 12px,
+    transparent 12px,
+    transparent 13px,
+    #0f172a 13px,
+    #0f172a 15px,
+    transparent 15px,
+    transparent 18px
+  );
+  width: 100%;
+}
+
+/* ==========================================================================
+   CUSTOMER NIGHT MODE (របៀបរាត្រី / DARK MODE) STYLES
+   ========================================================================== */
+
+/* 1. Global Page Background & Text */
+body.night-mode {
+  background-color: #0b0f19 !important;
+  background-image: 
+    radial-gradient(ellipse 85% 480px at 50% 0%, rgba(245, 158, 11, 0.16) 0px, transparent 68%),
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.10) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+    linear-gradient(rgba(11, 15, 25, 0.94), rgba(11, 15, 25, 0.97)),
+    url('khmer_edu_bg.jpg') !important;
+  color: #e2e8f0 !important;
+}
+
+body.night-mode.theme-khmer {
+  background-color: #081014 !important;
+  background-image: 
+    linear-gradient(rgba(8, 16, 20, 0.93), rgba(8, 16, 20, 0.96)),
+    url('khmer_edu_bg.jpg') !important;
+}
+
+body.night-mode.theme-school {
+  background-color: #09131d !important;
+  background-image: 
+    linear-gradient(rgba(9, 19, 29, 0.93), rgba(9, 19, 29, 0.96)),
+    url('school_season_bg.jpg') !important;
+}
+
+body.night-mode.theme-vacation {
+  background-color: #121018 !important;
+  background-image: 
+    linear-gradient(rgba(18, 16, 24, 0.93), rgba(18, 16, 24, 0.96)),
+    url('vacation_season_bg.jpg') !important;
+}
+
+/* 2. Header, Top Bar & Navigation */
+body.night-mode header.glass-nav {
+  background: rgba(15, 23, 42, 0.92) !important;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.28) !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 2px 14px rgba(245, 158, 11, 0.15) !important;
+}
+
+body.night-mode header button.bg-white,
+body.night-mode header button.bg-white\/90,
+body.night-mode header a.bg-slate-100\/90 {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+body.night-mode header button.bg-white:hover,
+body.night-mode header a.bg-slate-100\/90:hover {
+  background-color: #334155 !important;
+  border-color: #475569 !important;
+}
+
+body.night-mode header .text-slate-800,
+body.night-mode header .text-slate-700 {
+  color: #f8fafc !important;
+}
+
+body.night-mode #header-owner-contact-pill {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.25) !important;
+}
+body.night-mode #header-owner-contact-pill span.owner-title {
+  color: #fef08a !important;
+}
+
+/* 3. Hero Section & Search Bar */
+body.night-mode #hero-section {
+  background: linear-gradient(to bottom, rgba(5, 10, 20, 0.82) 0%, rgba(6, 25, 45, 0.72) 50%, rgba(5, 10, 20, 0.94) 100%), url('self_study_night.jpg') center/cover no-repeat !important;
+  border-bottom-color: rgba(51, 65, 85, 0.5) !important;
+}
+
+body.night-mode #search-input {
+  background-color: rgba(15, 23, 42, 0.85) !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+body.night-mode #search-input:focus {
+  background-color: #0f172a !important;
+  border-color: #38bdf8 !important;
+}
+
+/* 4. Category & Filter Toolbar */
+body.night-mode .bg-white\/85 {
+  background-color: rgba(21, 29, 48, 0.94) !important;
+  border-color: rgba(245, 158, 11, 0.38) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 22px rgba(245, 158, 11, 0.25) !important;
+}
+
+body.night-mode .cat-btn.bg-white,
+body.night-mode .size-filter-btn.bg-white,
+body.night-mode #sort-select,
+body.night-mode #grid-view-btn.bg-white,
+body.night-mode #list-view-btn.bg-white,
+body.night-mode #btn-night-mode-mobile-toolbar {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+}
+
+body.night-mode .cat-btn.bg-white:hover,
+body.night-mode .size-filter-btn.bg-white:hover {
+  background-color: #334155 !important;
+  color: #ffffff !important;
+}
+
+body.night-mode #sort-select {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+body.night-mode .text-slate-900,
+body.night-mode .text-slate-800 {
+  color: #f8fafc !important;
+}
+
+body.night-mode .text-slate-600,
+body.night-mode .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+body.night-mode .border-slate-200\/70,
+body.night-mode .border-slate-200\/80,
+body.night-mode .border-slate-200 {
+  border-color: #26334d !important;
+}
+
+/* 5. Product Cards */
+body.night-mode #products-grid > div {
+  background-color: #151d30 !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 16px rgba(245, 158, 11, 0.22) !important;
+}
+
+body.night-mode #products-grid > div:hover {
+  border-color: #fbbf24 !important;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.7), 0 0 32px rgba(245, 158, 11, 0.50), 0 0 50px rgba(251, 191, 36, 0.35) !important;
+}
+
+body.night-mode #products-grid h3 {
+  color: #f8fafc !important;
+}
+
+body.night-mode #products-grid h3:hover {
+  color: #38bdf8 !important;
+}
+
+body.night-mode #products-grid p {
+  color: #94a3b8 !important;
+}
+
+body.night-mode .size-tag {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+body.night-mode .size-tag span {
+  color: #e2e8f0 !important;
+}
+
+body.night-mode .border-slate-100 {
+  border-color: #26334d !important;
+}
+
+body.night-mode .btn-wishlist {
+  background-color: rgba(30, 41, 59, 0.9) !important;
+  border: 1px solid #334155 !important;
+  color: #cbd5e1;
+}
+
+body.night-mode button[onclick*="addToCart"] {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+body.night-mode button[onclick*="addToCart"]:hover {
+  background-color: #334155 !important;
+}
+
+body.night-mode button[onclick*="addToCart"] svg {
+  color: #38bdf8 !important;
+}
+
+body.night-mode button[onclick*="quickTelegramOrder"] {
+  background-color: rgba(14, 165, 233, 0.15) !important;
+  border-color: rgba(56, 189, 248, 0.4) !important;
+  color: #38bdf8 !important;
+}
+
+body.night-mode button[onclick*="quickTelegramOrder"]:hover {
+  background-color: rgba(14, 165, 233, 0.25) !important;
+}
+
+/* 6. Modals, Drawers & Dialogs */
+body.night-mode .modal-backdrop > div,
+body.night-mode #cart-drawer {
+  background-color: #111827 !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
+  color: #f3f4f6 !important;
+  box-shadow: 0 30px 75px rgba(0, 0, 0, 0.85), 0 0 45px rgba(245, 158, 11, 0.38), 0 0 75px rgba(251, 191, 36, 0.22) !important;
+}
+
+body.night-mode .modal-backdrop .bg-slate-50,
+body.night-mode .modal-backdrop .bg-slate-50\/50,
+body.night-mode .modal-backdrop .bg-slate-50\/70,
+body.night-mode .modal-backdrop .bg-slate-50\/40,
+body.night-mode .modal-backdrop .bg-white,
+body.night-mode #cart-items {
+  background-color: #182234 !important;
+}
+
+body.night-mode #cart-drawer > div:last-child {
+  background-color: #111827 !important;
+  border-color: #1f2937 !important;
+}
+
+body.night-mode .modal-backdrop .border-slate-100,
+body.night-mode .modal-backdrop .border-slate-200,
+body.night-mode .modal-backdrop .border-slate-300,
+body.night-mode #cart-drawer .border-slate-200 {
+  border-color: #26334d !important;
+}
+
+body.night-mode .modal-backdrop h3,
+body.night-mode .modal-backdrop h4,
+body.night-mode #cart-drawer h3 {
+  color: #f9fafb !important;
+}
+
+body.night-mode .modal-backdrop p,
+body.night-mode .modal-backdrop span.text-slate-500,
+body.night-mode .modal-backdrop span.text-slate-600 {
+  color: #9ca3af !important;
+}
+
+body.night-mode .modal-backdrop input,
+body.night-mode .modal-backdrop select,
+body.night-mode .modal-backdrop textarea {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+body.night-mode .modal-backdrop input:focus,
+body.night-mode .modal-backdrop select:focus,
+body.night-mode .modal-backdrop textarea:focus {
+  background-color: #111827 !important;
+  border-color: #0284c7 !important;
+}
+
+body.night-mode #website-qr-card-view {
+  background: linear-gradient(to bottom, #182234, #111827) !important;
+  border-color: #26334d !important;
+}
+
+/* 7. Mobile Bottom Navigation */
+body.night-mode #mobile-bottom-nav {
+  background-color: rgba(17, 24, 39, 0.96) !important;
+  border-color: #1f2937 !important;
+}
+
+body.night-mode #mobile-bottom-nav button span {
+  color: #94a3b8;
+}
+
+body.night-mode #mobile-bottom-nav button:hover span,
+body.night-mode #mobile-bottom-nav button:active span {
+  color: #38bdf8;
+}
+
+/* 8. Footer */
+body.night-mode footer {
+  background-color: #070b12 !important;
+  border-top-color: #1e293b !important;
+  color: #cbd5e1 !important;
+}
+
+body.night-mode footer .text-slate-900,
+body.night-mode footer .text-slate-800 {
+  color: #f8fafc !important;
+}
+
+body.night-mode footer .text-slate-600,
+body.night-mode footer .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+/* 9. Global Smooth Theme Transitions */
+body,
+header.glass-nav,
+#products-grid > div,
+#cart-drawer,
+.modal-backdrop > div,
+.cat-btn,
+.size-filter-btn {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 10. Bulk Discount Tier Card & Classroom Showcase (Night Mode) */
+body.night-mode #cart-wholesale-tier-card {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(17, 24, 39, 0.95)) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+}
+
+body.night-mode #cart-wholesale-badge-text {
+  color: #fde68a !important;
+}
+
+body.night-mode #cart-wholesale-hint {
+  color: #fef3c7 !important;
+}
+
+body.night-mode section .bg-white {
+  background-color: #111827 !important;
+  border-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+}
+
+body.night-mode section .bg-white h2,
+body.night-mode section .bg-white h4 {
+  color: #f9fafb !important;
+}
+
+body.night-mode section .bg-white p.italic {
+  background-color: #182234 !important;
+  border-color: #26334d !important;
+  color: #cbd5e1 !important;
+}
+
+/* ==========================================================================
+   CLASSROOM WALL DECOR SIMULATOR & POSTER FRAMES
+   ========================================================================== */
+.wall-poster-slot {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, filter;
+}
+
+.wall-poster-slot:hover {
+  filter: drop-shadow(0 14px 28px rgba(251, 191, 36, 0.55));
+}
+
+#ba-wall-posters-stage {
+  perspective: 1000px;
+}
+
+#classroom-transformation-widget.ring-2 {
+  transition: box-shadow 0.4s ease-in-out;
+  box-shadow: 0 0 35px rgba(251, 191, 36, 0.7), 0 0 70px rgba(245, 158, 11, 0.4);
+}
+
+/* ==========================================================================
+   SIDEBAR CATEGORY BUTTON BADGES & COLUMN ENHANCEMENTS
+   ========================================================================== */
+.cat-btn.active span[id^="user-count"] {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.cat-btn:not(.active) span[id^="user-count"] {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+body.night-mode .cat-btn:not(.active) span[id^="user-count"] {
+  background-color: #334155 !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+/* ==========================================================================
+   ADVANCED FEATURES: CERTIFICATES, AUDIO PREVIEWS, LUCKY WHEEL & SHOWCASE
+   ========================================================================== */
+@keyframes audioWavePulse {
+  0%, 100% { height: 6px; }
+  50% { height: 22px; }
+}
+
+.audio-wave-bar {
+  display: inline-block;
+  width: 3px;
+  background-color: #f59e0b;
+  border-radius: 9999px;
+  animation: audioWavePulse 0.8s ease-in-out infinite;
+}
+.audio-wave-bar:nth-child(2) { animation-delay: 0.15s; }
+.audio-wave-bar:nth-child(3) { animation-delay: 0.3s; }
+.audio-wave-bar:nth-child(4) { animation-delay: 0.45s; }
+
+/* Wheel Pointer Glow */
+.wheel-pointer {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+/* Certificate Preview Canvas */
+#cert-canvas {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.3), 0 8px 10px -6px rgba(245, 158, 11, 0.2);
+}
+
+/* Quick Feature Launch Pills */
+.feature-launch-pill {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.feature-launch-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -3px rgba(245, 158, 11, 0.35);
+}
+
+/* Standalone Lucky Wheel Gentle Spin Animation */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  display: inline-block;
+  animation: spinSlow 12s linear infinite;
+}
+
+
+
+
+
+
+

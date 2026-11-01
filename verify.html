@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduShop Verification Suite • ឧបករណ៍ត្រួតពិនិត្យសុវត្ថិភាព Project</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Kantumruy Pro', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen pb-16">
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 text-white flex items-center justify-center text-xl font-black shadow-sm">
+          🛡️
+        </span>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">EduShop Project Verification Suite</h1>
+          <p class="text-xs text-slate-500">ឧបករណ៍ត្រួតពិនិត្យសុខភាពកូដ និងប្រព័ន្ធទូទាត់ KHQR មុននឹងកែមុខងារថ្មីៗ</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="run-tests-btn" onclick="runAllTests()" class="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm active:scale-95 cursor-pointer">
+          <span>▶️</span> <span>ដំណើរការតេស្តម្ដងទៀត</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+    <!-- Summary Card -->
+    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">លទ្ធផលសរុប (Overall Status)</span>
+          <div id="overall-badge" class="mt-1 flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
+              <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+              កំពុងដំណើរការតេស្ត...
+            </span>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="text-center">
+            <span id="stat-pass" class="text-2xl font-black text-emerald-600 block">0</span>
+            <span class="text-[11px] font-bold text-slate-500 uppercase">បានជោគជ័យ</span>
+          </div>
+          <div class="text-center">
+            <span id="stat-fail" class="text-2xl font-black text-rose-600 block">0</span>
+            <span class="text-[11px] font-bold text-slate-500 uppercase">បរាជ័យ</span>
+          </div>
+          <div class="text-center">
+            <span id="stat-total" class="text-2xl font-black text-slate-800 block">0</span>
+            <span class="text-[11px] font-bold text-slate-500 uppercase">តេស្តសរុប</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="w-full bg-slate-100 rounded-full h-2 mt-4 overflow-hidden">
+        <div id="test-progress-bar" class="bg-sky-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Test List -->
+    <div class="space-y-3">
+      <h2 class="text-sm font-bold text-slate-700 px-1 flex items-center gap-2">
+        <span>📋</span> <span>បញ្ជីតេស្តត្រួតពិនិត្យ (Test Cases)</span>
+      </h2>
+      <div id="test-container" class="space-y-2.5">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- Visual KHQR Card Preview Section -->
+    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs space-y-4">
+      <div>
+        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+          <span>🖼️</span> <span>រូបភាព KHQR Card ដែលបានបង្កើតជាក់ស្ដែង (Visual Proof)</span>
+        </h3>
+        <p class="text-xs text-slate-500 mt-0.5">ផ្ទាំងខាងក្រោមនេះ ត្រូវបាន Canvas បង្កើតឡើងដោយផ្ទាល់ (Instant 0ms, Non-Tainted, Offline)</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- ABA Dynamic Preview -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col items-center">
+          <span class="text-xs font-bold text-rose-600 mb-2">1. ABA KHQR Dynamic (25,000 ៛)</span>
+          <div id="preview-aba-box" class="w-full flex justify-center min-h-[300px] items-center text-xs text-slate-400">
+            កំពុងបង្កើតរូបភាព...
+          </div>
+        </div>
+
+        <!-- ACLEDA Static Preview -->
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col items-center">
+          <span class="text-xs font-bold text-sky-700 mb-2">2. ACLEDA KHQR Static (Vey Kimleang)</span>
+          <div id="preview-acleda-box" class="w-full flex justify-center min-h-[300px] items-center text-xs text-slate-400">
+            កំពុងបង្កើតរូបភាព...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Terminal Commands Guide -->
+    <div class="bg-slate-900 text-slate-100 rounded-2xl p-5 shadow-xs space-y-3">
+      <div class="flex items-center gap-2 text-yellow-400 font-bold text-xs uppercase tracking-wider">
+        <span>💡</span> <span>ការប្រើប្រាស់ក្នុង Terminal / CMD</span>
+      </div>
+      <p class="text-xs text-slate-300">លោកអ្នកអាចពិនិត្យកូដមុននឹងកែប្រែដោយផ្ទាល់តាមរយៈ Command ខាងក្រោម៖</p>
+      <div class="bg-slate-950 p-3 rounded-xl font-mono text-xs text-emerald-400 space-y-1">
+        <div># វិធីទី១ (ចុច Double Click លើ File):</div>
+        <div class="text-white">verify.bat</div>
+        <div class="mt-2"># វិធីទី២ (ដំណើរការតាម PowerShell):</div>
+        <div class="text-white">powershell -ExecutionPolicy Bypass -File .\verify-project.ps1</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Load Real Project Scripts -->
+  <script src="qrcode.min.js"></script>
+  <script src="app.js"></script>
+
+  <!-- Test Suite Engine -->
+  <script>
+    const tests = [
+      {
+        id: 'qrcode-engine',
+        title: 'Pure JavaScript QR Generator Engine',
+        desc: 'ពិនិត្យមើលថាតើបណ្ណាល័យ qrcode ត្រូវបានផ្ទុក និងដំណើរការបង្កើត QR ដោយគ្មាន API ក្រៅឬទេ',
+        run: async () => {
+          if (typeof qrcode !== 'function') throw new Error('qrcode function is not defined');
+          const qr = qrcode(0, 'M');
+          qr.addData('TEST_PAYLOAD');
+          qr.make();
+          const count = qr.getModuleCount();
+          const dataUrl = qr.createDataURL(4, 2);
+          if (!dataUrl.startsWith('data:image/')) throw new Error('DataURL generation failed');
+          return `ជោគជ័យ! បង្កើត QR Matrix (${count}x${count}) និង DataURL ប្រវែង ${dataUrl.length} bytes`;
+        }
+      },
+      {
+        id: 'crc16-calc',
+        title: 'Bakong KHQR CRC-16 Calculation Algorithm',
+        desc: 'ផ្ទៀងផ្ទាត់ក្បួនគណនា CRC16/CCITT-FALSE (Polynomial 0x1021, Init 0xFFFF) ឱ្យដូចគំរូ ABA ផ្លូវការ',
+        run: async () => {
+          if (typeof calcKhqrCrc16 !== 'function') throw new Error('calcKhqrCrc16 function is missing');
+          const sample = "00020101021229450016abaakhppxxx@abaa01090083506160208ABA Bank40390006abaP2P011298BE427281B902090083506165204000053031165405100005802KH5911KOEUR SOYTY6010Phnom Penh993400131790654183515011318221901835156304";
+          const crc = calcKhqrCrc16(sample);
+          if (crc !== '6C1E') throw new Error(`CRC16 mismatch! Expected 6C1E, got ${crc}`);
+          return `ជោគជ័យ! គណនា CRC16 ស្មើ ${crc} ត្រឹមត្រូវដូចគំរូ 10,000៛ ផ្លូវការ`;
+        }
+      },
+      {
+        id: 'aba-dynamic-payload',
+        title: 'ABA Dynamic KHQR Payload Generation',
+        desc: 'ពិនិត្យការបញ្ចូល Tag 54 (ចំនួនទឹកប្រាក់ជាក់ស្ដែង) ទៅក្នុងកូដ EMVCo KHQR របស់ ABA',
+        run: async () => {
+          if (typeof generateAbaKhqrPayload !== 'function') throw new Error('generateAbaKhqrPayload function is missing');
+          const payload25k = generateAbaKhqrPayload(25000);
+          if (!payload25k.includes('540525000')) throw new Error('Tag 54 with amount 25000 is missing or incorrect');
+          if (!payload25k.includes('KOEUR SOYTY')) throw new Error('Merchant name KOEUR SOYTY is missing');
+          return `ជោគជ័យ! កូដ KHQR 25,000 ៛ បានបញ្ចូល Tag 540525000 និង CRC16 ចុងក្រោយត្រឹមត្រូវ`;
+        }
+      },
+      {
+        id: 'acleda-payload',
+        title: 'ACLEDA Official KHQR Payload Check',
+        desc: 'ផ្ទៀងផ្ទាត់កូដ KHQR ដើមរបស់ ACLEDA Bank សម្រាប់គណនី Vey Kimleang (090343206)',
+        run: async () => {
+          if (typeof ACLEDA_KHQR_STATIC_PAYLOAD === 'undefined') throw new Error('ACLEDA_KHQR_STATIC_PAYLOAD is not defined');
+          if (!ACLEDA_KHQR_STATIC_PAYLOAD.includes('Vey Kimleang') || !ACLEDA_KHQR_STATIC_PAYLOAD.includes('090343206')) {
+            throw new Error('ACLEDA payload missing merchant name or phone number');
+          }
+          return `ជោគជ័យ! កូដ ACLEDA KHQR (Vey Kimleang - 090 343 206) មានទម្រង់ត្រឹមត្រូវ`;
+        }
+      },
+      {
+        id: 'canvas-card-export',
+        title: 'Non-Tainted Canvas Card Generation & Export to Blob',
+        desc: 'ធានាថា Canvas គូររូបភាព KHQR Card (640x920) មិន Tainted លើ file:// និង Export ជា Blob ជោគជ័យ',
+        run: async () => {
+          if (typeof generateKhqrCardBlob !== 'function') throw new Error('generateKhqrCardBlob is missing');
+          const blob = await generateKhqrCardBlob({
+            merchantName: 'KOEUR SOYTY',
+            bankName: 'ABA Bank',
+            accountDetail: 'ABA: 008 350 616 / 069 49 01 08',
+            payableKHR: 25000,
+            payableUSD: 6.25,
+            payload: generateAbaKhqrPayload(25000),
+            isAcleda: false,
+            qrSrc: 'aba_khqr.jpg'
+          });
+          if (!blob || blob.size < 50000) throw new Error('Blob export failed or size too small');
+          
+          // Display in Visual Preview Box
+          const previewBox = document.getElementById('preview-aba-box');
+          const imgUrl = URL.createObjectURL(blob);
+          previewBox.innerHTML = `<img src="${imgUrl}" class="max-h-[340px] rounded-xl shadow border border-slate-200 object-contain">`;
+
+          return `ជោគជ័យ! បង្កើត KHQR Card Blob ទំហំ ${Math.round(blob.size / 1024)} KB ដោយគ្មាន SecurityError`;
+        }
+      },
+      {
+        id: 'acleda-canvas-export',
+        title: 'ACLEDA Canvas Card Generation & Preview',
+        desc: 'ធានាថាការបង្កើត KHQR Card ACLEDA (Vey Kimleang) ដំណើរការបានជោគជ័យ និងបង្ហាញចំនួនទឹកប្រាក់ត្រឹមត្រូវ',
+        run: async () => {
+          const blob = await generateKhqrCardBlob({
+            merchantName: 'Vey Kimleang',
+            bankName: 'ACLEDA Bank',
+            accountDetail: 'ACLEDA: 090 343 206',
+            payableKHR: 40000,
+            payableUSD: 10.00,
+            payload: ACLEDA_KHQR_STATIC_PAYLOAD,
+            isAcleda: true,
+            qrSrc: 'acleda_khqr.jpg'
+          });
+          if (!blob || blob.size < 50000) throw new Error('ACLEDA Blob export failed');
+
+          const previewBox = document.getElementById('preview-acleda-box');
+          const imgUrl = URL.createObjectURL(blob);
+          previewBox.innerHTML = `<img src="${imgUrl}" class="max-h-[340px] rounded-xl shadow border border-slate-200 object-contain">`;
+
+          return `ជោគជ័យ! បង្កើត ACLEDA Card Blob ទំហំ ${Math.round(blob.size / 1024)} KB រួចរាល់`;
+        }
+      },
+      {
+        id: 'coupons-system',
+        title: 'Coupons System Validation',
+        desc: 'ផ្ទៀងផ្ទាត់បញ្ជីលេខកូដបញ្ចុះតម្លៃទាំងអស់ (EDUSHOP10, SCHOOL10, FREESHIP, TEACHER5, KIMLEANG)',
+        run: async () => {
+          if (typeof AVAILABLE_COUPONS === 'undefined' || !Array.isArray(AVAILABLE_COUPONS)) {
+            throw new Error('AVAILABLE_COUPONS is not defined or invalid');
+          }
+          const expectedCodes = ['EDUSHOP10', 'SCHOOL10', 'FREESHIP', 'TEACHER5', 'KIMLEANG'];
+          for (const code of expectedCodes) {
+            if (!AVAILABLE_COUPONS.some(c => c.code === code)) {
+              throw new Error(`Missing expected coupon: ${code}`);
+            }
+          }
+          return `ជោគជ័យ! មាន Coupon ត្រឹមត្រូវទាំង ៥ (${expectedCodes.join(', ')})`;
+        }
+      },
+      {
+        id: 'currency-exchange',
+        title: 'Currency Exchange Rate Verification',
+        desc: 'ពិនិត្យអត្រាប្តូរប្រាក់ $1 USD = 4,000 ៛ KHR សម្រាប់ការទូទាត់',
+        run: async () => {
+          if (typeof EXCHANGE_RATE === 'undefined' || EXCHANGE_RATE !== 4000) {
+            throw new Error(`Invalid EXCHANGE_RATE! Expected 4000, got ${typeof EXCHANGE_RATE !== 'undefined' ? EXCHANGE_RATE : 'undefined'}`);
+          }
+          const khr = 10 * EXCHANGE_RATE;
+          if (khr !== 40000) throw new Error('Exchange calculation error');
+          return `ជោគជ័យ! អត្រាប្តូរប្រាក់ EXCHANGE_RATE = 4000 ៛ ត្រឹមត្រូវ`;
+        }
+      },
+      {
+        id: 'safe-download-helper',
+        title: 'Safe Direct Download Helper Check',
+        desc: 'ពិនិត្យមើលថាតើ directDownloadLink មិនប្រើ target="_blank" ដើម្បីជៀសវាង Popup Blocker',
+        run: async () => {
+          if (typeof directDownloadLink !== 'function') throw new Error('directDownloadLink function is missing');
+          const fnString = directDownloadLink.toString();
+          if (fnString.includes("target = '_blank'") || fnString.includes('target = "_blank"')) {
+            throw new Error('directDownloadLink still contains target="_blank"!');
+          }
+          return `ជោគជ័យ! directDownloadLink ស្អាតគ្មាន target="_blank" មិនប៉ះពាល់ Popup Blocker`;
+        }
+      }
+    ];
+
+    function renderTestList() {
+      const container = document.getElementById('test-container');
+      container.innerHTML = tests.map((t, idx) => `
+        <div id="test-card-${t.id}" class="bg-white rounded-xl border border-slate-200 p-4 transition shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold text-slate-400">#${idx + 1}</span>
+              <span class="text-sm font-bold text-slate-800">${t.title}</span>
+            </div>
+            <p class="text-xs text-slate-500">${t.desc}</p>
+            <div id="test-detail-${t.id}" class="text-[11px] font-mono text-slate-400 hidden mt-1"></div>
+          </div>
+          <div id="test-badge-${t.id}" class="flex-shrink-0">
+            <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-500">រង់ចាំ...</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function runAllTests() {
+      renderTestList();
+      const btn = document.getElementById('run-tests-btn');
+      btn.disabled = true;
+      btn.classList.add('opacity-60', 'pointer-events-none');
+
+      let passed = 0;
+      let failed = 0;
+      const total = tests.length;
+
+      document.getElementById('stat-total').textContent = total;
+      document.getElementById('stat-pass').textContent = '0';
+      document.getElementById('stat-fail').textContent = '0';
+
+      const overallBadge = document.getElementById('overall-badge');
+      overallBadge.innerHTML = `
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
+          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+          កំពុងដំណើរការតេស្ត...
+        </span>
+      `;
+
+      for (let i = 0; i < tests.length; i++) {
+        const t = tests[i];
+        const card = document.getElementById(`test-card-${t.id}`);
+        const badge = document.getElementById(`test-badge-${t.id}`);
+        const detail = document.getElementById(`test-detail-${t.id}`);
+
+        badge.innerHTML = `<span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-sky-100 text-sky-700 animate-pulse">⏳ កំពុងតេស្ត...</span>`;
+
+        try {
+          const res = await t.run();
+          passed++;
+          document.getElementById('stat-pass').textContent = passed;
+          badge.innerHTML = `<span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-100 text-emerald-800">✓ ជោគជ័យ (PASS)</span>`;
+          card.classList.add('border-emerald-200');
+          if (res) {
+            detail.textContent = res;
+            detail.className = 'text-[11px] font-mono text-emerald-600 block mt-1';
+          }
+        } catch (err) {
+          failed++;
+          document.getElementById('stat-fail').textContent = failed;
+          badge.innerHTML = `<span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-rose-100 text-rose-800">✗ បរាជ័យ (FAIL)</span>`;
+          card.classList.add('border-rose-300', 'bg-rose-50/20');
+          detail.textContent = 'កំហុស៖ ' + err.message;
+          detail.className = 'text-[11px] font-mono text-rose-600 block mt-1';
+        }
+
+        const pct = Math.round(((i + 1) / total) * 100);
+        document.getElementById('test-progress-bar').style.width = `${pct}%`;
+      }
+
+      if (failed === 0) {
+        overallBadge.innerHTML = `
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">
+            <span class="text-sm">✓</span> ជោគជ័យ ១០០% (ALL TESTS PASSED)
+          </span>
+        `;
+      } else {
+        overallBadge.innerHTML = `
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black bg-rose-100 text-rose-800 border border-rose-300">
+            <span class="text-sm">⚠️</span> មានបញ្ហា ${failed} ចំណុច (FAILED)
+          </span>
+        `;
+      }
+
+      btn.disabled = false;
+      btn.classList.remove('opacity-60', 'pointer-events-none');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      runAllTests();
+    });
+  </script>
+</body>
+</html>

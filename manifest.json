@@ -1,0 +1,28 @@
+{
+  "name": "EduShop Cambodia - ហាងសម្ភារឧបទេសសិក្សា & តុបតែងថ្នាក់រៀន",
+  "short_name": "EduShop",
+  "description": "ហាងលក់សម្ភារឧបទេសសិក្សា តុបតែងថ្នាក់រៀន និងល្បែងសិក្សាកុមារបែបខ្មែរ",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8fafc",
+  "theme_color": "#0284c7",
+  "lang": "km",
+  "dir": "ltr",
+  "categories": ["education", "shopping"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
