@@ -4422,15 +4422,15 @@ function openShippingLabelModal(orderId) {
     let qrImgHtml = '';
     if (typeof qrcode !== 'undefined') {
       try {
-        const qr = qrcode(0, 'M');
-        qr.addData(`https://edushop-cambodia.com/index.html?track=${encodeURIComponent(order.id)}`);
+        const qr = qrcode(0, 'H');
+        qr.addData(`https://soyty123.github.io/webshop/index.html?track=${encodeURIComponent(order.id)}`);
         qr.make();
         const qrDataUrl = qr.createDataURL(4, 2);
         qrImgHtml = `<img src="${qrDataUrl}" alt="QR" class="w-14 h-14 object-contain border border-slate-300 rounded-lg p-0.5 bg-white flex-shrink-0" />`;
       } catch (e) {}
     }
     if (!qrImgHtml) {
-      qrImgHtml = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&margin=4&data=${encodeURIComponent('https://edushop-cambodia.com/index.html?track=' + order.id)}" alt="QR" class="w-14 h-14 object-contain border border-slate-300 rounded-lg p-0.5 bg-white flex-shrink-0" />`;
+      qrImgHtml = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&margin=4&data=${encodeURIComponent('https://soyty123.github.io/webshop/index.html?track=' + order.id)}" alt="QR" class="w-14 h-14 object-contain border border-slate-300 rounded-lg p-0.5 bg-white flex-shrink-0" />`;
     }
 
     printArea.innerHTML = `
@@ -6813,21 +6813,28 @@ function getAdminWebsiteUrl() {
       return `${u.origin}${path}`;
     }
   }
-  return 'https://edushop-cambodia.com';
+  return 'https://soyty123.github.io/webshop/';
 }
 
 function getAdminWebsiteQrDataUrl(url, cellSize = 7, margin = 3) {
   if (typeof qrcode !== 'undefined' && url) {
     try {
-      const qr = qrcode(0, 'M');
+      const qr = qrcode(0, 'H');
       qr.addData(url);
       qr.make();
       return qr.createDataURL(cellSize, margin);
     } catch (e) {
-      console.warn('qrcode error for website URL:', e);
+      try {
+        const qrM = qrcode(0, 'M');
+        qrM.addData(url);
+        qrM.make();
+        return qrM.createDataURL(cellSize, margin);
+      } catch (e2) {
+        console.warn('qrcode error for website URL:', e2);
+      }
     }
   }
-  return `https://api.qrserver.com/v1/create-qr-code/?size=450x450&margin=12&data=${encodeURIComponent(url || 'https://edushop-cambodia.com')}`;
+  return `https://api.qrserver.com/v1/create-qr-code/?size=450x450&margin=12&data=${encodeURIComponent(url || 'https://soyty123.github.io/webshop/')}`;
 }
 
 function updateAdminWebsiteQrDisplay() {

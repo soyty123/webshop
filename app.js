@@ -8199,7 +8199,7 @@ let currentWebsiteQrMode = (typeof window !== 'undefined' && window.location && 
 
 function getStoreWebsiteUrl() {
   const custom = localStorage.getItem(WEBSITE_URL_STORAGE_KEY);
-  if (custom && custom.trim()) {
+  if (custom && custom.trim() && !custom.includes('edushop-cambodia.com')) {
     return custom.trim();
   }
   if (typeof window !== 'undefined' && window.location) {
@@ -8214,7 +8214,7 @@ function getStoreWebsiteUrl() {
       return `${u.origin}${path}`;
     }
   }
-  return 'https://edushop-cambodia.com';
+  return 'https://soyty123.github.io/webshop/';
 }
 
 function getActiveWebsiteQrUrl() {
@@ -8245,15 +8245,36 @@ function setWebsiteQrTargetMode(mode) {
 function getWebsiteQrDataUrl(url, cellSize = 6, margin = 4) {
   if (typeof qrcode !== 'undefined' && url) {
     try {
-      const qr = qrcode(0, 'M');
+      const qr = qrcode(0, 'H');
       qr.addData(url);
       qr.make();
       return qr.createDataURL(cellSize, margin);
     } catch (e) {
-      console.warn('qrcode error for website URL:', e);
+      try {
+        const qrM = qrcode(0, 'M');
+        qrM.addData(url);
+        qrM.make();
+        return qrM.createDataURL(cellSize, margin);
+      } catch (e2) {
+        console.warn('qrcode error for website URL:', e2);
+      }
     }
   }
   return `https://api.qrserver.com/v1/create-qr-code/?size=450x450&margin=12&data=${encodeURIComponent(url || STORE_TELEGRAM_URL)}`;
+}
+
+function handleWebsiteQrOpenLink(event) {
+  if (currentWebsiteQrMode === 'telegram') {
+    openShopDirectTelegram(event);
+  } else {
+    const activeUrl = getActiveWebsiteQrUrl();
+    if (activeUrl) {
+      if (event) {
+        try { event.preventDefault(); } catch (e) {}
+      }
+      window.open(activeUrl, '_blank', 'noopener,noreferrer');
+    }
+  }
 }
 
 function updateWebsiteQrElements() {
@@ -8269,6 +8290,12 @@ function updateWebsiteQrElements() {
   const openLinkBtn = document.getElementById('website-qr-open-link-btn');
   if (openLinkBtn) {
     openLinkBtn.href = activeUrl;
+    const linkText = document.getElementById('website-qr-open-link-text');
+    if (linkText) {
+      linkText.textContent = (currentWebsiteQrMode === 'telegram')
+        ? 'ចុចបើក Telegram ផ្ទាល់ (Open Telegram)'
+        : 'ចុចបើកគេហទំព័រផ្ទាល់ (Open Website)';
+    }
   }
 
   const modeBadge = document.getElementById('website-qr-mode-badge');
